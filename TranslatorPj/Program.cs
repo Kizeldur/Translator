@@ -26,7 +26,9 @@ namespace TranslatorPj
             dict.DictionaryFromJson("D:/newjsom.json");
             Console.WriteLine();
             Console.WriteLine(Translator.GiveMeKey(dict, "predicate"));
+            dict.WriteToJson("D:/qwe.json");
             Console.ReadLine();
+            
         }
     }
 }

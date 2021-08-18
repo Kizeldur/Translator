@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json;
@@ -37,6 +38,16 @@ namespace TranslatorLibrary
             {
                 dictionary.Add(pair.Key, pair.Value);
                 Console.WriteLine($"{pair.Key}-{pair.Value}");
+            }
+        }
+
+        public void WriteToJson(string path)
+        {
+            using (FileStream jsonFile = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write))
+            {
+                string json = JsonConvert.SerializeObject(dictionary, Formatting.Indented);
+                var bites = Encoding.UTF8.GetBytes(json);
+                jsonFile.Write(bites);
             }
         }
     }

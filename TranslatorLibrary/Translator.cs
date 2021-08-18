@@ -23,23 +23,15 @@ namespace TranslatorLibrary
 
         public static string GiveMeKey(Libra dictionary, string word)
         {
-            
             string key = dictionary.dictionary.Where(x => x.Value == word).FirstOrDefault().Key;
-            if (key == String.Empty)
+            
+            if (key != null)
             {
-                //throw new KeyNotFoundException();
-                Console.WriteLine("rty");
-                return "qwe";
-            }
-            else if (key == null)
-            {
-                Console.WriteLine("zxc");
-                throw new KeyNotFoundException();
+                return key;
             }
             else
             {
-                
-                return key;
+                throw new KeyNotFoundException();
             }
         }
         
